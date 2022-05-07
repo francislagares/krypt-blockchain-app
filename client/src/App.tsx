@@ -1,10 +1,16 @@
 import React from 'react';
-import './styles/index.css';
+import { Welcome, Navbar, Footer, Services, Transactions } from 'components';
 
 const App = () => {
   return (
-    <div className='app'>
-      <h1 className='text-3xl font-bold'>Hello React App</h1>
+    <div className='min-h-screen'>
+      <div className='gradient-bg-welcome'>
+        <Navbar />
+        <Welcome />
+      </div>
+      <Services />
+      <Transactions />
+      <Footer />
     </div>
   );
 };

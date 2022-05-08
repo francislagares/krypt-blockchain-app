@@ -98,7 +98,7 @@
   "settings": {
     "import/resolver": {
       "typescript": {
-        "project": "./client"
+        "project": "."
       }
     },
     "react": {

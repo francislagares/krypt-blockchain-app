@@ -36,6 +36,12 @@
   $ git clone https://github.com/francislagares/krypt-blockchain-app.git
   ```
 
+- Navigate to client directory
+
+  ```bash
+  cd client
+  ```
+
 - Install the dependencies by running the following command.
 
   ```bash

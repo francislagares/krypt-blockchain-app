@@ -4,6 +4,7 @@ import { AiFillPlayCircle } from 'react-icons/ai';
 import { BsInfoCircle } from 'react-icons/bs';
 import { SiEthereum } from 'react-icons/si';
 import Loader from 'components/Loader/Loader';
+import { useTransactionContext } from 'context/TransactionContext';
 
 interface InputProps {
   placeholder: string;
@@ -34,16 +35,22 @@ const Input = ({
 );
 
 const Welcome = () => {
-  const connectWallet = () => {
-    console.log('Connect Wallet');
-  };
+  const {
+    connectWallet,
+    currentAccount,
+    handleChange,
+    formData,
+    sendTransaction,
+  } = useTransactionContext();
 
-  const handleChange = () => {
-    console.log('Change');
-  };
+  const handleSubmit = (e: Submit) => {
+    const { addressTo, amount, keyword, message } = formData;
 
-  const handleSubmit = () => {
-    console.log('Submited ');
+    e.preventDefault();
+
+    if (!addressTo || !amount || !keyword || !message) return;
+
+    sendTransaction();
   };
 
   return (
@@ -57,14 +64,18 @@ const Welcome = () => {
             Explore the crypto world. Buy and sell cryptocurrencies easily on
             Krypto.
           </p>
-          <button
-            type='button'
-            onClick={connectWallet}
-            className='flex flex-row justify-center items-center my-5 bg-[#2952e3] p-3 rounded-full cursor-pointer hover:bg-[#2546bd]'
-          >
-            <AiFillPlayCircle className='text-white mr-2' />
-            <p className='text-white text-base font-semibold'>Connect Wallet</p>
-          </button>
+          {!currentAccount && (
+            <button
+              type='button'
+              onClick={connectWallet}
+              className='flex flex-row justify-center items-center my-5 bg-[#2952e3] p-3 rounded-full cursor-pointer hover:bg-[#2546bd]'
+            >
+              <AiFillPlayCircle className='text-white mr-2' />
+              <p className='text-white text-base font-semibold'>
+                Connect Wallet
+              </p>
+            </button>
+          )}
 
           <div className='grid sm:grid-cols-3 grid-cols-2 w-full mt-10'>
             <div className={`rounded-tl-2xl ${companyCommonStyles}`}>

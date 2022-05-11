@@ -1,11 +1,15 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 const APIKEY = process.env.REACT_APP_GIPHY_API;
 
-const useFetch = ({ keyword }: any) => {
+interface IProps {
+  keyword: string;
+}
+
+const useFetch = ({ keyword }: IProps) => {
   const [gifUrl, setGifUrl] = useState('');
 
-  const fetchGifs = async () => {
+  const fetchGifs = useCallback(async () => {
     try {
       const response = await fetch(
         `https://api.giphy.com/v1/gifs/search?api_key=${APIKEY}&q=${keyword
@@ -20,11 +24,11 @@ const useFetch = ({ keyword }: any) => {
         'https://metro.co.uk/wp-content/uploads/2015/05/pokemon_crying.gif?quality=90&strip=all&zoom=1&resize=500%2C284',
       );
     }
-  };
+  }, [keyword]);
 
   useEffect(() => {
     if (keyword) fetchGifs();
-  }, [keyword]);
+  }, [keyword, fetchGifs]);
 
   return gifUrl;
 };

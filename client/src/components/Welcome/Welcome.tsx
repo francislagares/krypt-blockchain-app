@@ -1,4 +1,3 @@
-/* eslint-disable no-constant-condition */
 import React from 'react';
 import { AiFillPlayCircle } from 'react-icons/ai';
 import { BsInfoCircle } from 'react-icons/bs';
@@ -41,6 +40,7 @@ const Welcome = () => {
     currentAccount,
     handleChange,
     formData,
+    isLoading,
     sendTransaction,
   } = useTransactionContext();
 
@@ -143,7 +143,7 @@ const Welcome = () => {
 
             <div className='h-[1px] w-full bg-gray-400 my-2' />
 
-            {false ? (
+            {isLoading ? (
               <Loader />
             ) : (
               <button

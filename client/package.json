@@ -23,8 +23,7 @@
     "type-check": "tsc --project tsconfig.json --pretty --noEmit",
     "lint": "eslint --ext js,jsx,ts,tsx --fix --ignore-path .gitignore .",
     "format": "prettier --ignore-path .gitignore \"src/**/*.+(ts|js|tsx|json|md)\" --write",
-    "stylelint": "stylelint **/*.{css,scss,tsx,js} --fix",
-    "postinstall": "husky install"
+    "stylelint": "stylelint **/*.{css,scss,tsx,js} --fix"
   },
   "eslintConfig": {
     "extends": [
